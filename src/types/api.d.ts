@@ -46,3 +46,24 @@ export interface verifyPhoneVariables {
   key: string;
   phoneNumber: string;
 }
+
+
+export interface facebookConnect_FacebookConnect {
+  __typename: "FacebookConnectResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface facebookConnect {
+  FacebookConnect: facebookConnect_FacebookConnect;
+}
+
+export interface facebookConnectVariables {
+  firstName: string;
+  lastName: string;
+  email?: string | null;
+  fbId: string;
+}
+
+

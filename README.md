@@ -1,10 +1,10 @@
 
 ## Logged out
 
--[] Home
--[] Phone Login
--[] Verify Phone number
--[] Social Login
+-[x] Home
+-[x] Phone Login
+-[x] Verify Phone number
+-[x] Social Login
 
 
 ## Logged IN:
