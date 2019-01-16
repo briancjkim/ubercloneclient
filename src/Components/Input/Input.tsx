@@ -21,6 +21,7 @@ const Container = styled.input`
     font-weight:300;
   }
 `;
+
 interface IProps {
   value: string;
   placeholder: string;

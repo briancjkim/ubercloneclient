@@ -5,7 +5,7 @@ import { verifyPhone, verifyPhoneVariables } from '../../types/api';
 import { Mutation } from 'react-apollo';
 import { VERIFY_PHONE } from "./VerifyPhoneQueries";
 import { toast } from 'react-toastify';
-import { LOG_USER_IN } from '../../sharedQueries';
+import { LOG_USER_IN } from '../../sharedQueries.local';
 
 
 interface IProps extends RouteComponentProps<any> { }

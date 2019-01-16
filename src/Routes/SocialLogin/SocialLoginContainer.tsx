@@ -5,7 +5,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { facebookConnect, facebookConnectVariables } from "../../types/api";
 import { FACEBOOK_CONNECT } from "./SocialLoginQueries";
 import { toast } from 'react-toastify';
-import { LOG_USER_IN } from "../../sharedQueries";
+import { LOG_USER_IN } from "../../sharedQueries.local";
 
 class LoginMutation extends Mutation<
   facebookConnect,
@@ -48,7 +48,6 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
                 toast.error(FacebookConnect.error);
               }
             }}
-
           >
             {(facebookMutation, { loading }) => {
               this.facebookMutation = facebookMutation;
