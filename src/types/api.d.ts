@@ -104,6 +104,61 @@ export interface updateProfileVariables {
   profilePhoto: string;
 }
 
+export interface getPlaces_GetMyPlaces_places {
+  __typename: "Place";
+  id: number;
+  name: string;
+  address: string;
+  isFav: boolean;
+}
+
+export interface getPlaces_GetMyPlaces {
+  __typename: "GetMyPlacesResponse";
+  ok: boolean;
+  error: string | null;
+  places: (getPlaces_GetMyPlaces_places | null)[] | null;
+}
+
+export interface getPlaces {
+  GetMyPlaces: getPlaces_GetMyPlaces;
+}
+
+
+export interface addPlace_AddPlace {
+  __typename: "AddPlaceResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface addPlace {
+  AddPlace: addPlace_AddPlace;
+}
+
+export interface addPlaceVariables {
+  name: string;
+  lat: number;
+  lng: number;
+  address: string;
+  isFav: boolean;
+}
+
+
+export interface editPlace_EditPlace {
+  __typename: "EditPlaceResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface editPlace {
+  EditPlace: editPlace_EditPlace;
+}
+
+export interface editPlaceVariables {
+  placeId: number;
+  isFav?: boolean | null;
+}
+
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

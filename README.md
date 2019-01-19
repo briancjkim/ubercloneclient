@@ -11,10 +11,10 @@
 
 -[] Home
 -[] Ride
--[] Edit Account
--[] Settings
+-[x] Edit Account
+-[x] Settings
 -[] Saved Places
--[] Places
+-[x] Places
 -[] Add Place
 -[] Find Address
 -[] Challenge : Ride history
