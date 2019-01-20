@@ -18,6 +18,7 @@ const Container = styled.input`
   }
   &:disabled {
     opacity: 0.8;
+    cursor:not-allowed;
   }
 `;
 
@@ -25,10 +26,18 @@ interface IProps {
   value: string;
   onClick: any;
   disabled?: boolean;
+  className?: string;
 }
 
-const Button: React.SFC<IProps> = ({ value, onClick, disabled = false }) => (
-  <Container value={value} disabled={false} onClick={onClick} type={"submit"} />
-);
+const Button: React.SFC<IProps> = ({ value, onClick, disabled = false,
+  className }) => (
+    <Container
+      value={value}
+      disabled={false}
+      onClick={onClick}
+      type={"submit"}
+      className={className}
+    />
+  );
 
 export default Button;
