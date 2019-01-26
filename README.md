@@ -9,12 +9,12 @@
 
 ## Logged IN:
 
--[] Home
+-[x] Home
 -[] Ride
 -[x] Edit Account
 -[x] Settings
--[] Saved Places
+-[x] Saved Places
 -[x] Places
--[] Add Place
--[] Find Address
+-[x] Add Place
+-[x] Find Address
 -[] Challenge : Ride history

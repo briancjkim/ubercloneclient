@@ -9,6 +9,9 @@
 # production
 /build
 
+#key
+keys.ts
+
 # misc
 .DS_Store
 .env.local

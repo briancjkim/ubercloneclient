@@ -5,6 +5,9 @@ import styled from '../../typed-components';
 import Menu from '../../Components/Menu';
 import Button from '../../Components/Button';
 import AddressBar from '../../Components/AddressBar';
+import { userProfile, getRides } from '../../types/api';
+import { MutationFn } from 'react-apollo';
+import RidePopUp from '../../Components/RidePopUp';
 
 
 const Container = styled.div``;
@@ -35,6 +38,10 @@ const ExtendedButton = styled(Button)`
   width: 80%;
 `;
 
+const RequestButton = styled(ExtendedButton)`
+  bottom: 250px;
+`;
+
 const Map = styled.div`
   position: absolute;
   height: 100%;
@@ -49,6 +56,11 @@ interface IProps {
   toAddress: string;
   onAddressSubmit: () => void;
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  price?: number;
+  data?: userProfile;
+  requestRideFn?: MutationFn;
+  acceptRideFn?: MutationFn;
+  nearbyRide?: getRides;
 }
 const HomePresenter: React.SFC<IProps> = ({
   isMenuOpen,
@@ -57,8 +69,12 @@ const HomePresenter: React.SFC<IProps> = ({
   mapRef,
   toAddress,
   onAddressSubmit,
-  onInputChange
-
+  onInputChange,
+  price,
+  data: { GetMyProfile: { user = null } = {} } = {},
+  requestRideFn,
+  acceptRideFn,
+  nearbyRide: { GetNearbyRide: { ride = null } = {} } = {}
 }) => (
     <Container>
       <Helmet>Home | Nuber</Helmet>
@@ -75,17 +91,42 @@ const HomePresenter: React.SFC<IProps> = ({
         }}
       >
         {!loading && <MenuButton onClick={toggleMenu}>|||</MenuButton>}
-        <AddressBar
-          name={"toAddress"}
-          onChange={onInputChange}
-          value={toAddress}
-          onBlur={null}
-        />
-        <ExtendedButton
-          onClick={onAddressSubmit}
-          disabled={toAddress === ""}
-          value={"Pick Address"}
-        />
+        {user &&
+          !user.isDriving && (
+            <React.Fragment>
+              <AddressBar
+                name={"toAddress"}
+                onChange={onInputChange}
+                value={toAddress}
+                onBlur={null}
+              />
+              <ExtendedButton
+                onClick={onAddressSubmit}
+                disabled={toAddress === ""}
+                value={price ? "Change Address" : "Pick Address"}
+              />
+            </React.Fragment>
+          )}
+        {price &&
+          (<RequestButton
+            onClick={requestRideFn}
+            disabled={toAddress === ""}
+            value={`Request ride ($${price})`}
+          />
+          )}
+        {ride && (
+          <RidePopUp
+            id={ride.id}
+            pickUpAddress={ride.pickUpAddress}
+            dropOffAddress={ride.dropOffAddress}
+            price={ride.price}
+            distance={ride.distance}
+            passengerName={ride.passenger.fullName!}
+            passengerPhoto={ride.passenger.profilePhoto!}
+            acceptRideFn={acceptRideFn}
+          />
+        )}
+
         <Map ref={mapRef} />
       </Sidebar>
     </Container>
