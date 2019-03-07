@@ -19,6 +19,7 @@
     "apollo-link-ws": "^1.0.12",
     "apollo-utilities": "^1.1.2",
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "global": "^4.3.2",
     "google-maps-react": "^2.0.2",
     "graphql": "^14.0.2",
@@ -42,7 +43,9 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "precodegen": "apollo schema:download --endpoint=http://localhost:4000/graphql",
-    "codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/**/*.ts --addTypename --schema schema.json --target typescript --outputFlat"
+    "codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/**/*.ts --addTypename --schema schema.json --target typescript --outputFlat",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
@@ -50,5 +53,6 @@
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "typescript": "^3.2.2"
-  }
+  },
+  "homepage": "https://rlackswhd91.github.io/ubercloneclient"
 }
